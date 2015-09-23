@@ -1,0 +1,117 @@
+@white : #FFFFFF;
+@background-color : #327D32;
+@button-color : #6DAB14;
+@disabled-color : #888888;
+@modal-color : #000000;
+
+body {
+    background-color : @background-color;
+    font-family : Helvetica;
+    text-align: center;
+    & > .score {
+        font-size: 16px;       
+        color : @white;
+        display : inline-block;
+        margin-left : 10px;
+        border: 1px solid darken(@button-color, 25%);
+        background-color : darken(@background-color, 10%);
+        padding : 3px;
+        border-radius : 4px;
+        span {
+            padding-left : 3px;    
+            padding-right : 6px;
+        }
+        .time, .moves {
+            border-right : 1px solid darken(@button-color, 25%);    
+        }
+    }
+}
+
+.score {
+    .time:before {
+        content : "Time: ";
+    }
+    
+    .moves:before {
+        content : "Moves: ";   
+    }
+    
+    .shuffles:before {
+        content : "Shuffles: ";   
+    }
+}
+
+input {
+    margin: 10px;
+    font-size: 16px;
+    background: transparent linear-gradient(to bottom, @button-color 0%, darken(@button-color, 15%) 100%) repeat scroll 0px 0px;
+    border: 1px solid darken(@button-color, 25%);
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px @button-color inset;
+    font-weight: bold;
+    padding: 3px 10px;
+    cursor: pointer;  
+    color : @white;
+    
+    &:active {
+        color : spin(@button-color, 180); 
+    }
+    
+    &:disabled {
+        background: transparent linear-gradient(to bottom, @disabled-color 0%, darken(@disabled-color, 15%) 100%) repeat scroll 0px 0px;
+        box-shadow: 0px 0px 5px @disabled-color inset;
+        cursor : default;
+        color : darken(@white, 15%);
+    }
+}
+
+#won, #highscore {
+    background-color : fadeout(@modal-color, 30%);
+    position : absolute;
+    left : 0;
+    top : 0;
+    right : 0;
+    bottom : 0;
+    color : @white;
+    text-align : center;
+    z-index : 2;
+    display : none;
+    & > div {
+        margin-top : 10%;
+        display : inline-block;
+        background-color : darken(@background-color, 10%);
+        border-radius : 10px;
+        padding : 10px;
+        border: 2px solid darken(@button-color, 25%);
+        box-shadow: 0px 0px 30px 10px @button-color;
+        min-width : 30%;
+    }
+    h3 {
+        text-align: left;
+        margin : 2px;
+    }
+}
+
+#highscore table {
+    color : @white;
+    width : 100%;
+    margin-bottom : 10px;
+    border-collapse: collapse;
+    font-size: 14px;
+    
+    th {
+        background: transparent linear-gradient(to bottom, saturate(@button-color, -50%) 0%, saturate(darken(@button-color, 15%), -50%) 100%) repeat scroll 0px 0px;
+        font-weight : bold;
+        padding : 3px;
+        border: 1px solid darken(@button-color, 25%);
+    }
+    td {
+        border: 1px solid darken(@button-color, 25%);
+        text-align : center;
+        font-size : 12px;
+    }
+}
+
+#times-played:before {
+    content : "Games played: ";
+}
